@@ -1,0 +1,1 @@
+# eurorack-stereo-to-mono-module
