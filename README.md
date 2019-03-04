@@ -1,6 +1,6 @@
 # Eurorack stereo->mono module
 
-*Warning: Design not tested yet.*
+<img align="right" src="./PlaceholderImage.png">
 
 TODO: Description here
 
