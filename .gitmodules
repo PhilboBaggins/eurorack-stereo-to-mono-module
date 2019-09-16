@@ -1,4 +1,4 @@
 [submodule "Panel/eurorack-common"]
-	path = Panel/eurorack-common
+	path = Mechanical/eurorack-common
 	url = git@github.com:PhilboBaggins/eurorack-common.git
 	branch = master
