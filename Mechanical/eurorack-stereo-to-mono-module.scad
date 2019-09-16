@@ -3,8 +3,6 @@ $fn = 64;
 include <eurorack-common/panels.scad>
 include <eurorack-common/Switchcraft_35RAPC2AV.scad>
 
-MONO_JACK_RADIUS = 7 / 2;
-
 pcbHeight = 7.5 + 10 + 15 + 10 + 15 + 10 + 15 + 10 + 7.5;
 pcbWidth = 15;
 pcbThickness = 1.6;
@@ -45,8 +43,8 @@ module EurorackStereoToMonoModule_Panel_2D()
         translate([xOffset, yOffset, 0])
         for (idx = [0 : 3])
         {
-            translate([0, xPosConnSter[idx], 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, xPosConnMono[idx], 0]) circle(r=MONO_JACK_RADIUS);
+            translate([0, xPosConnSter[idx], 0]) circle(r=35RAPC2AV_JACK_RADIUS);
+            translate([0, xPosConnMono[idx], 0]) circle(r=35RAPC2AV_JACK_RADIUS);
         }
     }
 }
