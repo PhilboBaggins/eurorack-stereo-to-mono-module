@@ -10,7 +10,7 @@ pcbWidth = 15;
 pcbThickness = 1.6;
 
 yOffsetPCB = (EURORACK_PANEL_HEIGHT - pcbHeight) / 2;
-xOffsetPCB = 4.3 + (EURORACK_PANEL_WIDTH_4HP - 4.3 - 7.0 - 4.4) / 2;
+xOffsetPCB = EURORACK_PANEL_WIDTH_4HP - 4.3 - (EURORACK_PANEL_WIDTH_4HP - 4.3 - 7.0 - 4.4) / 2;
 
 module EurorackStereoToMonoModule_PCB()
 {
@@ -32,7 +32,7 @@ module EurorackStereoToMonoModule_PCB()
 
 module EurorackStereoToMonoModule_Panel_2D()
 {
-    xOffset = xOffsetPCB + 7; // ??????
+    xOffset = xOffsetPCB - 4.4 - pcbThickness - 1; // ??????
     yOffset = yOffsetPCB;
 
     difference()
@@ -65,12 +65,13 @@ module EurorackStereoToMonoModule_Assembly()
 
     translate([xOffsetPCB, yOffsetPCB, 0])
     {
-        rotate([0, 90, 0]) EurorackStereoToMonoModule_PCB();
-        
-        translate([0, 17.5, 0]) rotate([0, 90, 0]) Switchcraft35RAPC2AV();
-        translate([0, 42.5, 0]) rotate([0, 90, 0]) Switchcraft35RAPC2AV();
-        translate([0, 67.5, 0]) rotate([0, 90, 0]) Switchcraft35RAPC2AV();
-        translate([0, 92.5, 0]) rotate([0, 90, 0]) Switchcraft35RAPC2AV();
+        translate([0, 0, -pcbWidth])
+        rotate([0, 270, 0]) EurorackStereoToMonoModule_PCB();
+
+        translate([0, 17.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
+        translate([0, 42.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
+        translate([0, 67.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
+        translate([0, 92.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
     }
 }
 
