@@ -35,7 +35,7 @@ module EurorackStereoToMonoModule_PCB()
 
 module EurorackStereoToMonoModule_Panel_2D()
 {
-    xOffset = xOffsetPCB - 4.4 - pcbThickness - 1; // ??????
+    xOffset = xOffsetPCB - 4.4 - pcbThickness - 1;
     yOffset = yOffsetPCB;
 
     difference()
@@ -51,10 +51,23 @@ module EurorackStereoToMonoModule_Panel_2D()
     }
 }
 
+module panelText(size, txt)
+{
+    text(size=size, valign="center", font="Helvetica", txt);
+}
+
 module EurorackStereoToMonoModule_Panel_3D()
 {
     linear_extrude(height = EURORACK_PANEL_THICKNESS)
     EurorackStereoToMonoModule_Panel_2D();
+
+    translate([0, yOffsetPCB, EURORACK_PANEL_THICKNESS])
+    linear_extrude(height = EURORACK_PANEL_THICKNESS/3)
+    for (idx = [0 : 3])
+    {
+        translate([10.5, xPosConnSter[idx]]) panelText(2.3, "Stereo");
+        translate([10.5, xPosConnMono[idx]]) panelText(2.7, "Mono");
+    }
 }
 
 module EurorackStereoToMonoModule_Assembly()
