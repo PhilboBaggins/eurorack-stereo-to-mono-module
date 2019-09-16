@@ -12,6 +12,9 @@ pcbThickness = 1.6;
 yOffsetPCB = (EURORACK_PANEL_HEIGHT - pcbHeight) / 2;
 xOffsetPCB = EURORACK_PANEL_WIDTH_4HP - 4.3 - (EURORACK_PANEL_WIDTH_4HP - 4.3 - 7.0 - 4.4) / 2;
 
+xPosConnSter = [  7.5, 32.5, 57.5, 82.5 ];
+xPosConnMono = [ 17.5, 42.5, 67.5, 92.5 ];
+
 module EurorackStereoToMonoModule_PCB()
 {
     color("green")
@@ -40,15 +43,10 @@ module EurorackStereoToMonoModule_Panel_2D()
         EurorackPanel_4HP();
 
         translate([xOffset, yOffset, 0])
+        for (idx = [0 : 3])
         {
-            translate([0,  7.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 17.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 32.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 42.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 57.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 67.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 82.5, 0]) circle(r=MONO_JACK_RADIUS);
-            translate([0, 92.5, 0]) circle(r=MONO_JACK_RADIUS);
+            translate([0, xPosConnSter[idx], 0]) circle(r=MONO_JACK_RADIUS);
+            translate([0, xPosConnMono[idx], 0]) circle(r=MONO_JACK_RADIUS);
         }
     }
 }
@@ -68,14 +66,16 @@ module EurorackStereoToMonoModule_Assembly()
         translate([0, 0, -pcbWidth])
         rotate([0, 270, 0]) EurorackStereoToMonoModule_PCB();
 
-        translate([0, 17.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
-        translate([0, 42.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
-        translate([0, 67.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
-        translate([0, 92.5, 0]) rotate([0, 90, 180]) Switchcraft35RAPC2AV();
+        for (idx = [0 : 3])
+        {
+            translate([0, xPosConnMono[idx], 0])
+            rotate([0, 90, 180])
+            Switchcraft35RAPC2AV();
+        }
     }
 }
 
 //EurorackStereoToMonoModule_PCB();
 //EurorackStereoToMonoModule_Panel_2D();
 //EurorackStereoToMonoModule_Panel_3D();
-EurorackStereoToMonoModule_Assembly();
+//EurorackStereoToMonoModule_Assembly();
