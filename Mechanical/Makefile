@@ -1,25 +1,25 @@
-EXPORT_PREFIX := eurorack-stereo-to-mono-module
-MAIN_SOURCE_FILE := eurorack-stereo-to-mono-module.scad
+NAME := eurorack-stereo-to-mono-module
+
 ALL := \
-	exports/${EXPORT_PREFIX}-panel.dxf \
-	exports/${EXPORT_PREFIX}-panel.svg \
-	exports/${EXPORT_PREFIX}-panel.stl \
-	exports/${EXPORT_PREFIX}-assembly.stl
+	exports/${NAME}-panel.dxf \
+	exports/${NAME}-panel.svg \
+	exports/${NAME}-panel.stl \
+	exports/${NAME}-assembly.stl
 
 .PHONY: all clean
 
 all: ${ALL}
 
-exports/${EXPORT_PREFIX}-panel.dxf: exports/export-panel-2d.scad ${MAIN_SOURCE_FILE}
+exports/${NAME}-panel.dxf: exports/export-panel-2d.scad ${NAME}.scad
 	openscad -o $@ $<
 
-exports/${EXPORT_PREFIX}-panel.svg: exports/export-panel-2d.scad ${MAIN_SOURCE_FILE}
+exports/${NAME}-panel.svg: exports/export-panel-2d.scad ${NAME}.scad
 	openscad -o $@ $<
 
-exports/${EXPORT_PREFIX}-panel.stl: exports/export-panel-3d.scad ${MAIN_SOURCE_FILE}
+exports/${NAME}-panel.stl: exports/export-panel-3d.scad ${NAME}.scad
 	openscad -o $@ $<
 
-exports/${EXPORT_PREFIX}-assembly.stl: exports/export-assembly-3d.scad ${MAIN_SOURCE_FILE}
+exports/${NAME}-assembly.stl: exports/export-assembly-3d.scad ${NAME}.scad
 	openscad -o $@ $<
 
 clean:
