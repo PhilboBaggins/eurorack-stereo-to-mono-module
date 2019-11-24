@@ -10,10 +10,7 @@ ALL := \
 
 all: ${ALL}
 
-exports/${NAME}-panel.dxf: exports/export-panel-2d.scad ${NAME}.scad
-	openscad -o $@ $<
-
-exports/${NAME}-panel.svg: exports/export-panel-2d.scad ${NAME}.scad
+exports/${NAME}-panel.dxf exports/${NAME}-panel.svg: exports/export-panel-2d.scad ${NAME}.scad
 	openscad -o $@ $<
 
 exports/${NAME}-panel.stl: exports/export-panel-3d.scad ${NAME}.scad
