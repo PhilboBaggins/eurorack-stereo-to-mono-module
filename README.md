@@ -4,7 +4,7 @@ TODO: Description here
 
 ## Licence
 
-Copyright © 2018,2019 Phil Baldwin
+Copyright © 2018, 2019 Phil Baldwin
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0).
 
